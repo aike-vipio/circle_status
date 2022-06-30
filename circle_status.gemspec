@@ -35,7 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'guard-shell'
   spec.add_development_dependency 'pry-byebug'
 
-  spec.add_dependency 'circleci'
   spec.add_dependency 'git'
   spec.add_dependency 'awesome_print'
+  spec.add_dependency 'circleci', '~> 2.0'
 end
