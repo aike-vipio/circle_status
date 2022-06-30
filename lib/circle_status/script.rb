@@ -27,10 +27,14 @@ module CircleStatus
 
     def builds
       @builds ||= begin
-        builds = CircleCi::Project.recent_builds_branch(user_name, repo_name, branch).body
         fail ProjectError, 'no builds for this repository' if builds.empty?
+        builds = project.recent_builds_branch(branch).body
         builds
       end
+    end
+
+    def project
+      CircleCi::Project.new(user_name, repo_name)
     end
 
     def latest_build
