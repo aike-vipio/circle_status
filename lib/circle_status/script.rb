@@ -27,8 +27,9 @@ module CircleStatus
 
     def builds
       @builds ||= begin
-        fail ProjectError, 'no builds for this repository' if builds.empty?
         builds = project.recent_builds_branch(branch).body
+        raise ProjectError, 'no builds for this repository' if builds.empty?
+
         builds
       end
     end
